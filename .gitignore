@@ -67,3 +67,8 @@ fastlane/readme.md
 #JetBrains
 .idea
 node_modules
+
+# Resources, Assets
+mobile_android_sample_kotlin/app/src/main/assets
+mobile_android_sample/app/src/main/assets
+mobile_android_lib/src/main/res/raw
