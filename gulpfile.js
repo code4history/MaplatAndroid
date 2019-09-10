@@ -63,10 +63,7 @@ function copyAssets() {
     remoteSrc(['assets.zip'], {
         base: 'http://code4history.github.io/MaplatMobileGw/'
     }).pipe(unzip())
-        .pipe(gulp.dest('./mobile_android_sample/app/src/main'));
-    remoteSrc(['assets.zip'], {
-        base: 'http://code4history.github.io/MaplatMobileGw/'
-    }).pipe(unzip())
+        .pipe(gulp.dest('./mobile_android_sample/app/src/main'))
         .pipe(gulp.dest('./mobile_android_sample_kotlin/app/src/main'));
 
     /*for (var i=0; i<assetsCopy.length; i++) {
