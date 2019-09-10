@@ -4,8 +4,6 @@ var gulp = require('gulp'),
     unzip = require('gulp-unzip'),
     remoteSrc = require('gulp-remote-src');
 
-var isWin = os.type().toString().match('Windows') !== null;
-
 function removeResource() {
     var files = [
         './mobile_android_lib/src/main/res/raw',
@@ -51,19 +49,11 @@ function copyAssets() {
         .pipe(gulp.dest('./mobile_android_sample_kotlin/app/src/main'));
 }
 
-//gulp.parallel('config', 'less'),
 gulp.task('assets_copy', function() {
     removeResource();
     copyResource();
     copyAssets();
     return Promise.resolve();
-    /*removeResource();
-    copyResource(mobileTestCopy);
-    copyResource(mobileBaseCopy);
-    fs.copySync('mobile_test.html', './mobile_android/mobile_android_lib/src/main/res/raw/mobile_html');
-    fs.copySync('mobile_test.html', './mobile_ios/mobile_ios_lib/MaplatView/Maplat.bundle/mobile.html');
-    copyAssets();
-    return Promise.resolve();*/
 });
 
 
