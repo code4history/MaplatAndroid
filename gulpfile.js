@@ -49,7 +49,7 @@ function copyAssets() {
         .pipe(gulp.dest('./mobile_android_sample_kotlin/app/src/main'));
 }
 
-gulp.task('assets_copy', function() {
+gulp.task('init', function() {
     removeResource();
     copyResource();
     copyAssets();
