@@ -1,8 +1,12 @@
 var gulp = require('gulp'),
     os = require('os'),
     fs = require('fs-extra'),
+    concat = require('gulp-concat'),
+    replace = require('gulp-replace'),
     unzip = require('gulp-unzip'),
     remoteSrc = require('gulp-remote-src');
+
+var pkg = require('./package.json');
 
 function removeResource() {
     var files = [
@@ -53,7 +57,14 @@ gulp.task('init', function() {
     removeResource();
     copyResource();
     copyAssets();
-    return Promise.resolve();
+    return new Promise(function(resolve, reject) {
+        gulp.src(['./mobile_android_lib/build.gradle'])
+            .pipe(concat('build.gradle'))
+            .pipe(replace(/def VERSION_NAME = ".+"/g, 'def VERSION_NAME = "' + pkg.version + '"'))
+            .on('error', reject)
+            .pipe(gulp.dest('./mobile_android_lib/'))
+            .on('end', resolve);
+    });
 });
 
 
